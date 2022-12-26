@@ -26,7 +26,8 @@ data "aws_iam_policy_document" "this" {
     ]
     
     resources = [
-      "arn:aws:ssm:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:parameter/tvlk-secret/codebuild/${var.product_domain}/*"
+      coalesce(var.postgres_password_ssm_pattern,
+      "arn:aws:ssm:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:parameter/tvlk-secret/codebuild/${var.product_domain}/*")
     ]
   }
   

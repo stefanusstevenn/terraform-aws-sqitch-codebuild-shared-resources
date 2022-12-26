@@ -24,3 +24,9 @@ variable "key_arns" {
   description = "List of all AWS KMS Customer Managed Key ARNs that this role can use"
   default     = []
 }
+
+variable "postgres_password_ssm_pattern" {
+  type        = string
+  description = "Pattern of Postgres Password Parameter Store"
+  default     = ""
+}
